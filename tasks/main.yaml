@@ -78,6 +78,18 @@
   tags:
     - kafka_dirs
 
+- name: Template /etc/default
+  template:
+    src: default.j2
+    dest: "/etc/default/kafka"
+    group: "{{ kafka_group }}"
+    owner: "{{ kafka_user }}"
+    mode: 0644
+  notify:
+    - Restart Kafka service
+  tags:
+    - kafka_config    
+
 - name: Template configuration file to server.properties
   template:
     src: server.properties.j2

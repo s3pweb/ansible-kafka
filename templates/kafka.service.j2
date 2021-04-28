@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 Type=simple
-Environment="KAFKA_HEAP_OPTS={{ kafka_java_heap }}"
+EnvironmentFile=/etc/default/kafka
 SuccessExitStatus=143
 ExecStart={{ kafka_dir }}/bin/kafka-server-start.sh /etc/kafka/server.properties
 ExecStop={{ kafka_dir }}/bin/kafka-server-stop.sh
