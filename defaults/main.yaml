@@ -80,9 +80,9 @@ kafka_log_cleaner_threads: 1
 
 # The replication factor for the group metadata internal topics "__consumer_offsets" and "__transaction_state"
 # For anything other than development testing, a value greater than 1 is recommended for to ensure availability such as 3.
-kafka_offsets_topic_replication_factor: 1
-kafka_transaction_state_log_replication_factor: 1
-kafka_transaction_state_log_min_isr: 1
+kafka_offsets_topic_replication_factor: 3
+kafka_transaction_state_log_replication_factor: 3
+kafka_transaction_state_log_min_isr: 2
 
 # The minimum age of a log file to be eligible for deletion
 kafka_log_retention_hours: 168
@@ -102,7 +102,8 @@ kafka_auto_create_topics_enable: false
 kafka_delete_topic_enable: true
 
 # Default replication factor for automatically created topics.
-kafka_default_replication_factor: 1
+kafka_default_replication_factor: 3
+kafka_min_insync_replicas: 2
 
 kafka_group_initial_rebalance_delay_ms: 0
 
