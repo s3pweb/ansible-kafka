@@ -79,7 +79,7 @@ replica.socket.receive.buffer.bytes={{ kafka_replica_socket_receive_buffer_bytes
 ############################# Log Basics #############################
 
 # A comma separated list of directories under which to store log files
-log.dirs={{ kafka_data_log_dirs }}
+log.dirs={{ kafka_log_dirs }}
 
 # The default number of log partitions per topic. More partitions allow greater
 # parallelism for consumption, but this will also result in more files across
