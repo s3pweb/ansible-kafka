@@ -165,3 +165,14 @@ kafka_producer_compression_type: none
 
 kafka_consumer_group_id: kafka-consumer-group
 kafka_consumer_bootstrap_servers: "localhost:9092"
+
+############################# JMX #############################
+
+kafka_jmx_enabled: true
+kafka_jmx_host: 0.0.0.0
+kafka_jmx_port: 1099
+kafka_jmx_rmi_port: 1099
+kafka_jmx_role: readonly
+# Optional settings for using authentication
+# kafka_jmx_username: jmx
+# kafka_jmx_password: jmx
