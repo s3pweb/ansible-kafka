@@ -13,6 +13,7 @@ ExecStop={{ kafka_dir }}/bin/kafka-server-stop.sh
 User={{ kafka_user }}
 Group={{ kafka_group }}
 Restart=on-failure
+TimeoutStopSec=600
 
 [Install]
 WantedBy=multi-user.target
