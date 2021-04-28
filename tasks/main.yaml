@@ -86,7 +86,7 @@
     owner: "{{ kafka_user }}"
     mode: 0644
   notify:
-    - Restart Kafka service
+    - Restart kafka service
   tags:
     - kafka_config    
 
