@@ -47,7 +47,7 @@ controlled.shutdown.enable=true
 #   EXAMPLE:
 #     listeners = PLAINTEXT://your.host.name:9092
 #listeners=PLAINTEXT://:9092
-listeners={{ kafka_listener_protocol }}://{{ kafka_listener_hostname }}:{{ kafka_listener_port }}
+listeners={{ kafka_listener_protocol }}://{{ kafka_listener_hostname }}:{{ kafka_listener_port }},SSL://{{ kafka_listener_hostname }}:9093
 
 ssl.keystore.location = /opt/kafka/ssl/kafka.kafka-{{ kafka_broker_id }}.keystore.jks
 ssl.keystore.password = {{ kafka_password }}
@@ -65,6 +65,7 @@ security.inter.broker.protocol = SSL
 
 # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
 #listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+listener.security.protocol.map = PLAINTEXT:PLAINTEXT,SSL:SSL
 
 # The number of threads that the server uses for receiving requests from the network and sending responses to the network
 num.network.threads={{ kafka_num_network_threads }}
