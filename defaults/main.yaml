@@ -35,9 +35,10 @@ kafka_background_threads: 10
 #   EXAMPLE:
 #     listeners = PLAINTEXT://your.host.name:9092
 #listeners=PLAINTEXT://:9092
+
 kafka_listener_protocol: PLAINTEXT
-kafka_listener_hostname: localhost
 kafka_listener_port: 9092
+kafka_listener_hostname: localhost
 
 # Hostname and port the broker will advertise to producers and consumers. If not set,
 # it uses the value for "listeners" if configured.  Otherwise, it will use the value
