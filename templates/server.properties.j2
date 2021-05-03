@@ -49,6 +49,12 @@ controlled.shutdown.enable=true
 #listeners=PLAINTEXT://:9092
 listeners={{ kafka_listener_protocol }}://{{ kafka_listener_hostname }}:{{ kafka_listener_port }}
 
+ssl.keystore.location = /opt/kafka/ssl/kafka.kafka-{{ kafka_broker_id }}.keystore.jks
+ssl.keystore.password = {{ kafka_password }}
+ssl.key.password = {{ kafka_password }}
+ssl.truststore.location = /opt/kafka/ssl/kafka.kafka-{{ kafka_broker_id }}.truststore.jks
+ssl.truststore.password = {{ kafka_password }}
+
 # Hostname and port the broker will advertise to producers and consumers. If not set,
 # it uses the value for "listeners" if configured.  Otherwise, it will use the value
 # returned from java.net.InetAddress.getCanonicalHostName().
