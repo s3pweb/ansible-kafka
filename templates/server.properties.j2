@@ -55,12 +55,16 @@ ssl.key.password = {{ kafka_password }}
 ssl.truststore.location = /opt/kafka/ssl/kafka.kafka-{{ kafka_broker_id }}.truststore.jks
 ssl.truststore.password = {{ kafka_password }}
 
+ssl.keystore.type = JKS
+ssl.truststore.type = JKS
+
 # Hostname and port the broker will advertise to producers and consumers. If not set,
 # it uses the value for "listeners" if configured.  Otherwise, it will use the value
 # returned from java.net.InetAddress.getCanonicalHostName().
 #advertised.listeners=PLAINTEXT://your.host.name:9092
 advertised.listeners={{ kafka_advertised_listener_protocol }}://{{ kafka_advertised_listener_hostname }}:{{ kafka_advertised_listener_port }},SSL://{{ kafka_advertised_listener_hostname }}:9093
 
+ssl.endpoint.identification.algorithm=
 security.inter.broker.protocol = SSL
 
 # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
