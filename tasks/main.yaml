@@ -90,6 +90,16 @@
   tags:
     - kafka_config    
 
+- name: Copy Script to generate certificats
+  template:
+    src: generate-certificats.sh.j2
+    dest: '{{ kafka_dir }}/scripts'
+    group: '{{ kafka_group }}'
+    owner: '{{ kafka_user }}'
+    mode: 0755
+  tags:
+    - kafka_config
+
 - name: Template configuration file to server.properties
   template:
     src: server.properties.j2
