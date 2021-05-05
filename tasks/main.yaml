@@ -112,6 +112,16 @@
   tags:
     - kafka_config
 
+- name: Template configuration file to kafka_server_jaas.conf
+  template:
+    src: kafka_server_jaas.conf.j2
+    dest: '{{ kafka_dir }}/config/kafka_server_jaas.conf'
+    group: '{{ kafka_group }}'
+    owner: '{{ kafka_user }}'
+    mode: 0644
+  tags:
+    - kafka_config
+
 - name: Template configuration file to zookeeper.properties
   template:
     src: zookeeper.properties.j2

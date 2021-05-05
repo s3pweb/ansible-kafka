@@ -21,3 +21,5 @@ KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote.ssl=false \
 -Dcom.sun.management.jmxremote.host={{ kafka_jmx_host }}"
 {% endif %}
 {% endif %}
+
+KAFKA_OPTS="-Djava.security.auth.login.config={{ kafka_dir }}/config/kafka_server_jaas.conf" 

@@ -47,7 +47,7 @@ controlled.shutdown.enable=true
 #   EXAMPLE:
 #     listeners = PLAINTEXT://your.host.name:9092
 #listeners=PLAINTEXT://:9092
-listeners={{ kafka_listener_protocol }}://{{ kafka_listener_hostname }}:{{ kafka_listener_port }},SSL://{{ kafka_listener_hostname }}:9093
+listeners={{ kafka_listener_protocol }}://:{{ kafka_listener_port }},SASL_SSL://:9094 
 
 ssl.keystore.location = /opt/kafka/ssl/kafka.kafka-{{ kafka_broker_id }}.keystore.jks
 ssl.keystore.password = {{ kafka_password }}
@@ -62,10 +62,26 @@ ssl.truststore.type = JKS
 # it uses the value for "listeners" if configured.  Otherwise, it will use the value
 # returned from java.net.InetAddress.getCanonicalHostName().
 #advertised.listeners=PLAINTEXT://your.host.name:9092
-advertised.listeners={{ kafka_advertised_listener_protocol }}://{{ kafka_advertised_listener_hostname }}:{{ kafka_advertised_listener_port }}
+advertised.listeners={{ kafka_advertised_listener_protocol }}://{{ kafka_advertised_listener_hostname }}:{{ kafka_advertised_listener_port }},SASL_SSL://{{ kafka_advertised_listener_hostname }}:9094
 
 ssl.endpoint.identification.algorithm=
-security.inter.broker.protocol = SSL
+
+#security.inter.broker.protocol = SSL
+
+# set security inter broker for SASL through SSL 
+security.inter.broker.protocol=SASL_SSL 
+ssl.client.auth=required 
+ 
+# add authorizer for future needs (next article) 
+authorizer.class.name=kafka.security.auth.SimpleAclAuthorizer
+
+# List of enabled mechanisms, can be more than one 
+sasl.enabled.mechanisms=SCRAM-SHA-256, PLAIN 
+ 
+# Specify one of of the SASL mechanisms 
+sasl.mechanism.inter.broker.protocol=SCRAM-SHA-256
+
+
 
 # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
 #listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
