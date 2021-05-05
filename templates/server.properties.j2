@@ -67,19 +67,20 @@ advertised.listeners={{ kafka_advertised_listener_protocol }}://{{ kafka_adverti
 ssl.endpoint.identification.algorithm=
 
 #security.inter.broker.protocol = SSL
+security.inter.broker.protocol=SASL_SSL
 
-# set security inter broker for SASL through SSL 
-security.inter.broker.protocol=SASL_SSL 
-ssl.client.auth=required 
- 
-# add authorizer for future needs (next article) 
-authorizer.class.name=kafka.security.auth.SimpleAclAuthorizer
+# List of enabled mechanisms, can be more than one
+sasl.enabled.mechanisms=SCRAM-SHA-256,PLAIN
 
-# List of enabled mechanisms, can be more than one 
-sasl.enabled.mechanisms=SCRAM-SHA-256, PLAIN 
- 
-# Specify one of of the SASL mechanisms 
+# Specify one of of the SASL mechanisms
 sasl.mechanism.inter.broker.protocol=SCRAM-SHA-256
+
+ssl.client.auth=required
+
+# for ACL (RBAC)
+authorizer.class.name=kafka.security.auth.SimpleAclAuthorizer
+allow.everyone.if.no.acl.found=true
+super.users=User:admin
 
 
 
