@@ -264,3 +264,24 @@
     state: absent
   tags:
     - kafka_cleanup
+
+- name: Create kafka users
+  shell:
+    cmd: /opt/kafka/bin/kafka-configs.sh --zookeeper "$(grep zookeeper.connect= /opt/kafka/config/server.properties|cut -d'=' -f2)" --alter --add-config 'SCRAM-SHA-256=[password='{{ item.password }}'],SCRAM-SHA-512=[password='{{ item.password }}']' --entity-type users --entity-name {{ item.name }}
+  with_items: "{{ kafka_users }}"
+  run_once: true
+  tags:
+    - kafka_users
+
+- name: Create kafka docker secrets
+  community.docker.docker_secret:
+    name: "kafka-{{ item.name }}-password"
+    data: "{{ item.password }}"
+    state: present
+    #no_log: true
+  with_items: "{{ kafka_users }}"
+  run_once: true
+  delegate_to: "{{ kafka_docker_host }}"
+  when: kafka_docker_host is defined
+  tags:
+    - kafka_users

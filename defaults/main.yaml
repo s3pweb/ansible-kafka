@@ -178,3 +178,5 @@ kafka_jmx_role: readonly
 # Optional settings for using authentication
 # kafka_jmx_username: jmx
 # kafka_jmx_password: jmx
+
+kafka_users: []
