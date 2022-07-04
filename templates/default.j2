@@ -8,6 +8,7 @@ KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote.ssl=false \
 -Djava.rmi.server.hostname={{ kafka_jmx_host }} \
 -Dcom.sun.management.jmxremote.port={{ kafka_jmx_port }} \
 -Dcom.sun.management.jmxremote.rmi.port={{ kafka_jmx_rmi_port }} \
+-Dcom.sun.management.jmxremote.local.only=false \
 -Dcom.sun.management.jmxremote.host={{ kafka_jmx_host }} \
 -Dcom.sun.management.jmxremote.password.toHashes=false \
 -Dcom.sun.management.jmxremote.password.file={{ kafka_conf_dir }}/jmxremote.password \
@@ -18,6 +19,7 @@ KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote.ssl=false \
 -Djava.rmi.server.hostname={{ kafka_jmx_host }} \
 -Dcom.sun.management.jmxremote.port={{ kafka_jmx_port }} \
 -Dcom.sun.management.jmxremote.rmi.port={{ kafka_jmx_rmi_port }} \
+-Dcom.sun.management.jmxremote.local.only=false \
 -Dcom.sun.management.jmxremote.host={{ kafka_jmx_host }}"
 {% endif %}
 {% endif %}
