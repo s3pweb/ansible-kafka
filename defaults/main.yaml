@@ -180,3 +180,5 @@ kafka_jmx_role: readonly
 # kafka_jmx_password: jmx
 
 kafka_users: []
+
+kafka_unit_path: /lib/systemd/system/kafka.service
